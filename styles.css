@@ -1,55 +1,28 @@
 /* 重置預設樣式並設置字體 */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #ffffff; /* 深灰色背景 */
-    color: #000000; /* 預設文字為白色 */
+    font-family: '微軟正黑體', "Times New Roman", "微軟雅黑", "Arial", "新細明體", "PMingLiU", "sans-serif";
+    background-color: white; /* 深灰色背景 */
+    color: #000000; /* 預設文字為黑色 */
     height: 100vh;
     overflow: hidden;
-}
-
-.box {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 20%;
-    /*  上下邊，下邊中間開口  */
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-}
-
-.inner-box {
-    position: absolute;
-    text-align: center;
-    top: 20%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
 /* 中央內容區域 */
 .content {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
+    width: auto;
+    height: auto;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    color: #000000; /* 金色文字，與遊戲風格一致 */
-}
-
-.content h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(76, 76, 76, 0.5); /* 金色光暈效果 */
-}
-
-.content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    color: #000000;
+    /*  圓角長方形  */
+    border-radius: 10px;
+    padding: 20px;
+    border: black 1px solid;
 }
 
 .content button {
@@ -66,13 +39,17 @@ body {
     background-color: #0003cc; /* 按鈕懸停時變深 */
 }
 
-.footer {
-    text-align: center;
+/*提示區域*/
+.box {
     position: absolute;
-    bottom: 168px;
+    top: 60%;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 20%;
+    /*  上下邊，下邊中間開口  */
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 /* 底部圖標 */

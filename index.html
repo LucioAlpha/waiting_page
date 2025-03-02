@@ -8,13 +8,25 @@
 </head>
 <body>
 
+<div id="loading-screen">
+    <div class="spinner"></div>
+</div>
+
+
 <!-- Banner -->
 <img src="imgs/banner.png" alt="逢甲大學選課系統" style="width: 100%;">
+
+<!-- login -->
+<div class="login">
+    <img src="imgs/login.png" alt="逢甲大學登入介面" style="width: 17.3%;">
+</div>
 
 <!-- 中央內容區域 -->
 <div class="content">
     <h2>網站無法連線</h2>
-    <p>由於技術相關的問題，目前</p>
+    <p>糟糕！這裡好像出了一點問題</p>
+    <p>我們優秀的資訊系正在處理這項問題</p>
+    <p>等一下再重試，或許就會好了</p>
     <button onclick="location.reload()">重新整理頁面</button>
 </div>
 
@@ -44,26 +56,46 @@
         '時常關注 ilearn 通知，不漏下任何課程的最新消息！',
         '逢甲大學的校園很大，記得提早出門，以免遲到！',
         '咖啡不是必須的，但是會讓幹話更有說服力！',
-        '',
+        '連結都是假的，作者偷懶不想寫功能',
     ];
 
     // 隨機更換提示的函式
     function changeTip() {
-        let newIndex;
-        do {
-            newIndex = Math.floor(Math.random() * tips.length);
-        } while (newIndex === prevIndex); // 避免與前一次相同
+        const tipsElement = document.querySelector('.tips');
 
-        prevIndex = newIndex; // 更新 prevIndex
-        document.querySelector('.tips').textContent = tips[newIndex];
+        // 顯示 Loading 效果
+        tipsElement.textContent = "載入中...";
+        tipsElement.classList.add("loading");
+
+        setTimeout(() => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * tips.length);
+            } while (newIndex === prevIndex);
+
+            prevIndex = newIndex;
+
+            // 更新提示並移除 Loading 效果
+            tipsElement.textContent = tips[newIndex];
+            tipsElement.classList.remove("loading");
+        }, 500); // 0.5 秒後顯示新提示
     }
 
-    // 當頁面加載時，隨機顯示提示
-    window.onload = changeTip;
 
     // 讓 `.box` 和 `.footer-icon img` 點擊時都能更換提示
     document.querySelector('.box').addEventListener('click', changeTip);
     document.querySelector('.footer-icon img').addEventListener('click', changeTip);
+
+    window.onload = function () {
+        // 隨機顯示提示
+        changeTip();
+
+        // 隱藏加載畫面
+        setTimeout(() => {
+            document.getElementById("loading-screen").style.display = "none";
+        }, 500); // 0.5秒後隱藏
+    };
+
 
 </script>
 </body>

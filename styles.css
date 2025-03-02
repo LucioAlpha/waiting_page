@@ -1,0 +1,90 @@
+/* 重置預設樣式並設置字體 */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* 深灰色背景 */
+    color: #000000; /* 預設文字為白色 */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.box {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 20%;
+    /*  上下邊，下邊中間開口  */
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.inner-box {
+    position: absolute;
+    text-align: center;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+/* 中央內容區域 */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    color: #000000; /* 金色文字，與遊戲風格一致 */
+}
+
+.content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(76, 76, 76, 0.5); /* 金色光暈效果 */
+}
+
+.content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.content button {
+    padding: 10px 20px;
+    background-color: #1130f4; /* 紅色按鈕，與光柱呼應 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.content button:hover {
+    background-color: #0003cc; /* 按鈕懸停時變深 */
+}
+
+.footer {
+    text-align: center;
+    position: absolute;
+    bottom: 168px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* 底部圖標 */
+.footer-icon {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.footer-icon img {
+    width: 200px;
+    height: auto;
+}

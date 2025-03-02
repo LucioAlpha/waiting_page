@@ -11,7 +11,7 @@ body {
 /* 中央內容區域 */
 .content {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     width: auto;
     height: auto;
@@ -38,17 +38,18 @@ body {
 .content button:hover {
     background-color: #0003cc; /* 按鈕懸停時變深 */
 }
+
 /*提示區域 - 對話框樣式*/
 .box {
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px; /* 固定寬度 */
+    width: auto; /* 固定寬度 */
     padding: 15px;
+    transform: translate(-50%, -50%);
     background-color: #f1f1f1; /* 對話框背景色 */
     border-radius: 15px; /* 圓角 */
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* 陰影 */
     text-align: center;
 }
@@ -79,7 +80,7 @@ body {
 /* 底部圖標 */
 .footer-icon {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;

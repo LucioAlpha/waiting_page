@@ -14,7 +14,7 @@
 <!-- 中央內容區域 -->
 <div class="content">
     <h2>網站無法連線</h2>
-    <p></p>
+    <p>由於技術相關的問題，目前</p>
     <button onclick="location.reload()">重新整理頁面</button>
 </div>
 
@@ -23,7 +23,6 @@
     <div style="display: inline; text-align: center;">
         <h3>你知道嗎?</h3>
         <div class="tips">
-            <p></p>
         </div>
     </div>
 </div>
@@ -35,36 +34,37 @@
 
 <!--新增頁面刷新事件-->
 <script>
+    var prevIndex = -1; // 設定 prevIndex 初始值，避免 undefined 問題
+
+    // 提示內容
+    const tips = [
+        '我的名字叫做戰神鷹，是逢甲大學的吉祥物，也是行動逢甲APP的頭像喔！',
+        'Dcard 上有老師們的課程評價，可以參考看看！',
+        '關於重大事件的公告常以學校信箱寄送，記得查收！',
+        '時常關注 ilearn 通知，不漏下任何課程的最新消息！',
+        '逢甲大學的校園很大，記得提早出門，以免遲到！',
+        '咖啡不是必須的，但是會讓幹話更有說服力！',
+        '',
+    ];
+
+    // 隨機更換提示的函式
+    function changeTip() {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * tips.length);
+        } while (newIndex === prevIndex); // 避免與前一次相同
+
+        prevIndex = newIndex; // 更新 prevIndex
+        document.querySelector('.tips').textContent = tips[newIndex];
+    }
+
     // 當頁面加載時，隨機顯示提示
-    window.onload = function () {
-        const tips = [
-            '逢甲大學是台灣第一所民辦大學',
-            '逢甲大學的校名是為了紀念逢甲先生',
-            '逢甲大學的校訓是「誠樸勤勉」',
-            '逢甲大學的校區位於台中市西屯區',
-            '逢甲大學的校色是藍色與白色'
-        ];
+    window.onload = changeTip;
 
-        // 取得隨機索引
-        const randomIndex = Math.floor(Math.random() * tips.length);
+    // 讓 `.box` 和 `.footer-icon img` 點擊時都能更換提示
+    document.querySelector('.box').addEventListener('click', changeTip);
+    document.querySelector('.footer-icon img').addEventListener('click', changeTip);
 
-        // 將隨機提示插入到對話框
-        document.querySelector('.tips').textContent = tips[randomIndex];
-    };
-
-    // 當提示被點擊時，隨機顯示提示
-    document.querySelector('.box').addEventListener('click', function () {
-        const tips = [
-            '逢甲大學是台灣第一所民辦大學',
-            '逢甲大學的校名是為了紀念逢甲先生',
-            '逢甲大學的校訓是「誠樸勤勉」',
-            '逢甲大學的校區位於台中市西屯區',
-            '逢甲大學的校色是藍色與白色'
-        ];
-
-        const randomIndex = Math.floor(Math.random() * tips.length);
-        document.querySelector('.tips').textContent = tips[randomIndex];
-    });
 </script>
 </body>
 </html>

@@ -2,11 +2,15 @@
     網站崩潰頁面設計: 逢甲大學選課系統
     設計概念:
         1. 在網站上方顯示逢甲大學選課系統的 Banner
-        2. 在網站畫面中間顯示逢甲大學吉祥物，並在側面顯示崩潰訊息與道歉
-        3. 在逢甲大學吉祥物下方顯示關於逢甲大學知識的小提示
+        2. 在網站畫面中間隨機顯示逢甲大學吉祥物，並在吉祥物的左方顯示崩潰訊息與道歉，文字與圖片是並列的
+            A. 逢甲大學吉祥物有好幾種，通通存在於 imgs 資料夾中
+            B. 除了 Banner 以外，都是逢甲大學吉祥物
+            C. 崩潰訊息與道歉是固定的，不會隨機變動
+        3. 在逢甲大學吉祥物右方顯示關於逢甲大學知識的小提示
         4. 創建滑鼠點擊事件
           A. 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
           B. 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
+          C. 小提示是隨機的，每次點擊都會顯示不同的小提示
 -->
 
 <!DOCTYPE html>
@@ -16,6 +20,49 @@
     <title>抱歉，網站崩潰了</title>
 </head>
 <body>
+    <!--    請根據設計概念完成程式碼-->
+    <!--    1. 在網站上方顯示逢甲大學選課系統的 Banner，填滿不留空白-->
+    <img src="imgs/banner.png" alt="逢甲大學選課系統 Banner" style="width: 100%;">
+    <!--    2. 在網站畫面中間隨機顯示逢甲大學吉祥物，並在吉祥物的左方顯示崩潰訊息與道歉，文字與圖片並列
+            A. 逢甲大學吉祥物有好幾種，通通存在於 imgs 資料夾中
+            B. 除了 Banner 以外，都是逢甲大學吉祥物
+            C. 崩潰訊息與道歉是固定的，不會隨機變動
+            -->
+    <div style="text-align: center;">
+        <img src="imgs/coffee.jpeg" alt="逢甲大學吉祥物" style="width: 25%;">
+        <div style="display: inline-block; text-align: left;">
+            <p>抱歉，網站崩潰了</p>
+            <p>很抱歉，逢甲大學選課系統目前正在維護中，造成您的不便敬請見諒</p>
+        </div>
+    <!--    3. 在逢甲大學吉祥物右方顯示關於逢甲大學知識的小提示-->
+    <div style="text-align: center;">
+        <p>逢甲大學知識小提示</p>
+        <p>逢甲大學是台灣第一所民辦大學</p>
+    </div>
+    <!--    4. 創建滑鼠點擊事件
+          A. 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
+          B. 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
+          C. 小提示是隨機的，每次點擊都會顯示不同的小提示
+          -->
+    <script>
+        // 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
+        document.body.addEventListener('click', function () {
+            location.reload();
+        });
+        // 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
+        document.querySelector('img').addEventListener('click', function () {
+            const tips = [
+                '逢甲大學是台灣第一所民辦大學',
+                '逢甲大學的校名是為了紀念逢甲先生',
+                '逢甲大學的校訓是「誠樸勤勉」',
+                '逢甲大學的校徽是一隻獅子',
+                '逢甲大學的校色是紅色與白色'
+            ];
+            const randomIndex = Math.floor(Math.random() * tips.length);
+            document.querySelector('p').textContent = tips[randomIndex];
+        });
+        // 當典籍
+    </script>
 
 </body>
 </html>

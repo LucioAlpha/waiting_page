@@ -38,19 +38,43 @@ body {
 .content button:hover {
     background-color: #0003cc; /* 按鈕懸停時變深 */
 }
-
-/*提示區域*/
+/*提示區域 - 對話框樣式*/
 .box {
     position: absolute;
-    top: 60%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
-    height: 20%;
-    /*  上下邊，下邊中間開口  */
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    width: 600px; /* 固定寬度 */
+    padding: 15px;
+    background-color: #f1f1f1; /* 對話框背景色 */
+    border-radius: 15px; /* 圓角 */
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* 陰影 */
+    text-align: center;
 }
+
+/* 小尾巴 */
+.box::after {
+    content: "";
+    position: absolute;
+    bottom: -15px; /* 調整尾巴位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: #f1f1f1 transparent transparent transparent; /* 上方三角形 */
+}
+
+.box h3 {
+    margin-top: 0;
+}
+
+.tips {
+    font-size: 16px;
+    color: #333;
+    padding-top: 5px;
+}
+
 
 /* 底部圖標 */
 .footer-icon {

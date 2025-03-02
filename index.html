@@ -1,73 +1,70 @@
-<!--
-    網站崩潰頁面設計: 逢甲大學選課系統
-    設計概念:
-        1. 在網站上方顯示逢甲大學選課系統的 Banner
-        2. 在網站畫面中間隨機顯示逢甲大學吉祥物，並在吉祥物的左方顯示崩潰訊息與道歉，文字與圖片是並列的
-            A. 逢甲大學吉祥物有好幾種，通通存在於 imgs 資料夾中
-            B. 除了 Banner 以外，都是逢甲大學吉祥物
-            C. 崩潰訊息與道歉是固定的，不會隨機變動
-        3. 在逢甲大學吉祥物右方顯示關於逢甲大學知識的小提示
-        4. 創建滑鼠點擊事件
-          A. 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
-          B. 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
-          C. 小提示是隨機的，每次點擊都會顯示不同的小提示
-     網站格式
-        1. Banner.img 在頁面的正上方
-        2. 葉面
--->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>抱歉，網站崩潰了</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網站無法連線</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!--    請根據設計概念完成程式碼-->
-    <!--    1. 在網站上方顯示逢甲大學選課系統的 Banner，填滿不留空白-->
-    <img src="imgs/banner.png" alt="逢甲大學選課系統" style="width: 100%;">
-    <!--    2. 在網站畫面中間隨機顯示逢甲大學吉祥物，並在吉祥物的左方顯示崩潰訊息與道歉，文字與圖片並列
-            A. 逢甲大學吉祥物有好幾種，通通存在於 imgs 資料夾中
-            B. 除了 Banner 以外，都是逢甲大學吉祥物
-            C. 崩潰訊息與道歉是固定的，不會隨機變動
-            -->
-    <!--  文字要有自己的文字框  -->
-    <div style="text-align: center;">
-        <div style="display: inline-block; text-align: left;">
-            <h1>目前網站無法連上</h1>
-            <p>抱歉，逢甲大學選課系統目前無法連上，請稍後再試</p>
-        </div>
-        <img src="imgs/coffee.jpeg" alt="逢甲大學吉祥物" style="width: 25%;">
-    </div>
-    <!--    3. 在逢甲大學吉祥物右方顯示關於逢甲大學知識的小提示-->
-    <div style="text-align: center;">
-        <p>逢甲大學知識小提示</p>
-        <p>逢甲大學是台灣第一所民辦大學</p>
-    </div>
-    <!--    4. 創建滑鼠點擊事件
-          A. 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
-          B. 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
-          C. 小提示是隨機的，每次點擊都會顯示不同的小提示
-          -->
-    <script>
-        // 當點擊畫面中網頁重新整理的按鈕時，刷新頁面
-        document.body.addEventListener('click', function () {
-            location.reload();
-        });
-        // 當點擊逢甲大學吉祥物時，顯示更新逢甲大學知識的小提示
-        document.querySelector('img').addEventListener('click', function () {
-            const tips = [
-                '逢甲大學是台灣第一所民辦大學',
-                '逢甲大學的校名是為了紀念逢甲先生',
-                '逢甲大學的校訓是「誠樸勤勉」',
-                '逢甲大學的校徽是一隻獅子',
-                '逢甲大學的校色是紅色與白色'
-            ];
-            const randomIndex = Math.floor(Math.random() * tips.length);
-            document.querySelector('p').textContent = tips[randomIndex];
-        });
-        // 當典籍
-    </script>
 
+<!-- Banner -->
+<img src="imgs/banner.png" alt="逢甲大學選課系統" style="width: 100%;">
+
+<!-- 中央內容區域 -->
+<div class="content">
+    <h2>網站無法連線</h2>
+    <p></p>
+    <button onclick="location.reload()">重新整理頁面</button>
+</div>
+
+<!-- 提示區域 -->
+<div class="box">
+    <div style="display: inline; text-align: center;">
+        <h3>你知道嗎?</h3>
+        <div class="tips">
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<!-- 底部圖標（可選） -->
+<div class="footer-icon">
+    <img src="imgs/coffee.jpeg" alt="吉祥物">
+</div>
+
+<!--新增頁面刷新事件-->
+<script>
+    // 當頁面加載時，隨機顯示提示
+    window.onload = function () {
+        const tips = [
+            '逢甲大學是台灣第一所民辦大學',
+            '逢甲大學的校名是為了紀念逢甲先生',
+            '逢甲大學的校訓是「誠樸勤勉」',
+            '逢甲大學的校區位於台中市西屯區',
+            '逢甲大學的校色是藍色與白色'
+        ];
+
+        // 取得隨機索引
+        const randomIndex = Math.floor(Math.random() * tips.length);
+
+        // 將隨機提示插入到對話框
+        document.querySelector('.tips').textContent = tips[randomIndex];
+    };
+
+    // 當提示被點擊時，隨機顯示提示
+    document.querySelector('.box').addEventListener('click', function () {
+        const tips = [
+            '逢甲大學是台灣第一所民辦大學',
+            '逢甲大學的校名是為了紀念逢甲先生',
+            '逢甲大學的校訓是「誠樸勤勉」',
+            '逢甲大學的校區位於台中市西屯區',
+            '逢甲大學的校色是藍色與白色'
+        ];
+
+        const randomIndex = Math.floor(Math.random() * tips.length);
+        document.querySelector('.tips').textContent = tips[randomIndex];
+    });
+</script>
 </body>
 </html>
